@@ -1,0 +1,121 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Estilos do cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-item {
+    margin: 5px 15px;
+    position: relative;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border: 1px solid #c6dac2;
+    border-radius: 5px;
+}
+
+/* Estilos do conteúdo */
+.content {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Alterado para distribuição de espaço ao redor dos cartões. */
+}
+
+.recipe-card, .employee-card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px; /* Reduzido a margem para um espaço igual em cada canto. */
+    border: 1px solid #ddd;
+    border-radius: 0px 40px 0px 40px;
+    box-shadow: 0px 0px 5px 0px #ccc;
+    width: calc(33.33% - 20px);
+    text-align: left;
+    box-sizing: border-box;
+    vertical-align: top;
+    position: relative;
+}
+
+.recipe-card img, .employee-card img {
+    max-width: auto;
+    height: 200px;
+    border-radius: 0px 40px 0px 40px;
+    display: block;
+    margin: 0 auto;
+}
+
+.recipe-card h2, .employee-card h2 {
+    font-weight: bold;
+    position: relative;
+    background-color: #ddbbd5;
+    padding: 5px;
+    border-radius: 0px 0px 40px 40px;
+    text-align: center;
+}
+
+.recipe-card p, .employee-card p {
+    margin: 0;
+    line-height: 2;
+}
+
+/* Estilos do rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
