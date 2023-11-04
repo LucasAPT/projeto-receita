@@ -1,0 +1,143 @@
+-- Cria o banco de dados acervoreceitas
+CREATE DATABASE IF NOT EXISTS acervoreceitas;
+
+-- Utiliza o banco de dados recém-criado
+USE acervoreceitas;
+
+-- Cria a tabela Cargo
+CREATE TABLE IF NOT EXISTS Cargo (
+    id_cargo INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL
+);
+
+-- Cria a tabela Categoria
+CREATE TABLE IF NOT EXISTS Categoria (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL
+);
+
+-- Cria a tabela Medida
+CREATE TABLE IF NOT EXISTS Medida (
+    id_medida INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255) NOT NULL
+);
+
+-- Cria a tabela Ingrediente
+CREATE TABLE IF NOT EXISTS Ingrediente (
+    id_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT
+);
+
+-- Cria a tabela Funcionario
+CREATE TABLE IF NOT EXISTS Funcionario (
+    id_funcionario INT AUTO_INCREMENT PRIMARY KEY,
+    foto_funcionario VARCHAR(255) NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    rg VARCHAR(20) NOT NULL,
+    data_ingresso DATE NOT NULL,
+    salario DECIMAL(10, 2) NOT NULL,
+    id_cargo INT,
+    nome_fantasia VARCHAR(255),
+    FOREIGN KEY (id_cargo) REFERENCES Cargo(id_cargo)
+);
+
+-- Cria a tabela Receita
+CREATE TABLE IF NOT EXISTS Receita (
+    id_receita INT AUTO_INCREMENT PRIMARY KEY,
+    foto_receita VARCHAR(255) NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    data_criacao DATE,
+    id_categoria INT,
+    modo_preparo TEXT,
+    qtde_porcao INT,
+    ind_receita_inedita BOOLEAN,
+    id_cozinheiro INT,
+    FOREIGN KEY (id_cozinheiro) REFERENCES Funcionario(id_funcionario),
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria)
+);
+
+-- Cria a tabela Composicao
+CREATE TABLE IF NOT EXISTS Composicao (
+    id_composicao INT AUTO_INCREMENT PRIMARY KEY,
+    id_receita INT,
+    id_ingrediente INT,
+    id_medida INT,
+    qtd_ingrediente DECIMAL(10, 2),
+    FOREIGN KEY (id_receita) REFERENCES Receita(id_receita) ON DELETE CASCADE,
+    FOREIGN KEY (id_ingrediente) REFERENCES Ingrediente(id_ingrediente),
+    FOREIGN KEY (id_medida) REFERENCES Medida(id_medida)
+) ENGINE=InnoDB;
+
+-- Cria a tabela Restaurante
+CREATE TABLE IF NOT EXISTS Restaurante (
+    idRestaurante INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL
+);
+
+-- Cria a tabela Referencia
+CREATE TABLE IF NOT EXISTS Referencia (
+    id_funcionario INT,
+    idRestaurante INT,
+    data_inicio DATE,
+    data_fim DATE,
+    FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id_funcionario),
+    FOREIGN KEY (idRestaurante) REFERENCES Restaurante(idRestaurante)
+);
+
+-- Cria a tabela Parametro_Sistema
+CREATE TABLE IF NOT EXISTS Parametro_Sistema (
+    mes_producao INT,
+    ano_producao INT,
+    qtde_receita INT
+);
+
+-- Cria a tabela Degustacao
+CREATE TABLE IF NOT EXISTS Degustacao (
+    degustador INT,
+    idcozinheiro INT,
+    nome VARCHAR(255),
+    data_degustacao DATE,
+    nota_degustacao DECIMAL(3, 2),
+    FOREIGN KEY (degustador) REFERENCES Funcionario(id_funcionario),
+    FOREIGN KEY (idcozinheiro) REFERENCES Funcionario(id_funcionario)
+);
+
+-- Cria a tabela Livro
+CREATE TABLE IF NOT EXISTS Livro (
+    idLivro INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    isbn VARCHAR(20) NOT NULL,
+    editor INT,
+    FOREIGN KEY (editor) REFERENCES Funcionario(id_funcionario)
+);
+
+-- Cria a tabela Publicacao
+CREATE TABLE IF NOT EXISTS Publicacao (
+    idLivro INT,
+    idReceita INT,
+    nome VARCHAR(255),
+    FOREIGN KEY (idLivro) REFERENCES Livro(idLivro),
+    FOREIGN KEY (idReceita) REFERENCES Receita(id_receita)
+);
+
+-- Cria a tabela administrador
+CREATE TABLE IF NOT EXISTS administrador (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+
+-- Modifique a tabela Livro para incluir um campo para a capa do livro
+ALTER TABLE Livro
+ADD capa_livro VARCHAR(255);
+
+-- Alterações para corrigir erros
+ALTER TABLE Degustacao ADD id_degustacao INT AUTO_INCREMENT PRIMARY KEY;
+
+ALTER TABLE Degustacao
+MODIFY nota_degustacao DECIMAL(4, 2);
+
+ALTER TABLE Referencia
+ADD id_referencia INT AUTO_INCREMENT PRIMARY KEY;
+
