@@ -26,8 +26,7 @@ if (isset($_GET['id'])) {
     } else {
         echo "Medida não encontrada.";
     }
-} else {a
-    echo "ID da medida não fornecido.";
+} else {
 }
 ?>
 

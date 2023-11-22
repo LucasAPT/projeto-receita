@@ -7,8 +7,8 @@
 <body>
     <!-- Cabeçalho -->
     <header>
-    <h2><a href="../index.php">Menu de Gerenciamento</a></h2>
-    <div class="menu-container">
+        <h2><a href="../index.php">Menu de Gerenciamento</a></h2>
+        <div class="menu-container">
             <ul class="menu-list">
                 <li class="menu-item">
                     <a href="../2-Read/listar-publicacao.php">Publicações</a>
@@ -35,11 +35,12 @@
         include "../conexao.php"; // Certifique-se de incluir seu arquivo de conexão
 
         try {
-            $stmt = $conexao->prepare("SELECT r.id_receita, r.nome, r.foto_receita, c.id_categoria, c.descricao AS categoria, r.modo_preparo, r.qtde_porcao, GROUP_CONCAT(i.nome ORDER BY i.nome ASC SEPARATOR ', ') AS ingredientes, f.id_funcionario AS id_cozinheiro, f.nome AS cozinheiro, f.nome_fantasia
+            $stmt = $conexao->prepare("SELECT r.id_receita, r.nome, r.foto_receita, c.id_categoria, c.descricao AS categoria, r.modo_preparo, r.qtde_porcao, GROUP_CONCAT(CONCAT(i.nome, ' (', comp.qtd_ingrediente, ' ', m.descricao, ')') ORDER BY i.nome ASC SEPARATOR ', ') AS ingredientes, f.id_funcionario AS id_cozinheiro, f.nome AS cozinheiro, f.nome_fantasia
                 FROM Receita r
                 LEFT JOIN Categoria c ON r.id_categoria = c.id_categoria
                 LEFT JOIN Composicao comp ON r.id_receita = comp.id_receita
                 LEFT JOIN Ingrediente i ON comp.id_ingrediente = i.id_ingrediente
+                LEFT JOIN Medida m ON comp.id_medida = m.id_medida
                 LEFT JOIN Funcionario f ON r.id_cozinheiro = f.id_funcionario
                 GROUP BY r.id_receita");
             $stmt->execute();
@@ -65,13 +66,13 @@
         ?>
 
     <!-- Rodapé -->
-<footer>
-    <div class="footer-container">
-    <h2>Menu de Navegação</h2>
-        <a href="../2-Read/apresentar-livro.php">Livros</a>
-        <a href="../2-Read/apresentar-receita.php">Receitas</a>
-        <a href="../2-Read/apresentar-funcionario.php">Funcionários</a>
-    </div>
-</footer>
+    <footer>
+        <div class="footer-container">
+            <h2>Menu de Navegação</h2>
+            <a href="../2-Read/apresentar-livro.php">Livros</a>
+            <a href="../2-Read/apresentar-receita.php">Receitas</a>
+            <a href="../2-Read/apresentar-funcionario.php">Funcionários</a>
+        </div>
+    </footer>
 </body>
 </html>

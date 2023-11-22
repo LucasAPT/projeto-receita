@@ -1,116 +1,290 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Menu Principal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal</title>
+    <!-- Adicione o link para o Bootstrap CSS aqui -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
         .menu-container {
-            width: 300px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
         }
 
         .menu-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .menu-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .menu-item {
-            margin: 10px 0;
-        }
-
-        .menu-link {
-            display: block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .menu-link:hover {
-            background-color: #0056b3;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
-    <div class="menu-container">
-        <h1 class="menu-title">Menu de Apresentação</h1>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="2-read/apresentar-livro.php">Apresentação de Livros</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-read/apresentar-receita.php">Apresentação de Receitas</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-read/apresentar-funcionario.php">Apresentação de Funcionários</a></li>
-        </ul>
-        <h1 class="menu-title">Menu de Publicação</h1>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-publicacao.php">Cadastrar Publicação</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-publicacao.php">Listar Publicação</a></li>
-        </ul>
-        <h1 class="menu-title">Menu de Livros</h1>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-livro.php">Cadastrar Livros</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-livro.php">Listar Livros</a></li>
-        </ul>
-        <h1 class="menu-title">Menu de Receitas</h1>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-receita.php">Cadastrar Receita</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-receita.php">Listar Receitas</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Ingredientes</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-ingrediente.php">Cadastrar Ingrediente</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-ingrediente.php">Listar Ingredientes</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Categorias</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-categoria.php">Cadastrar Categorias</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-categoria.php">Listar Categorias</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Funcionários</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-funcionario.php">Cadastrar Funcionário</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-funcionario.php">Listar Funcionários</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Cargos</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-cargo.php">Cadastrar Cargos</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-cargo.php">Listar Cargos</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Restaurantes</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-restaurante.php">Cadastrar Restaurantes</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-restaurante.php">Listar Restaurantes</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Referências</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-referencia.php">Cadastrar Referências</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-referencia.php">Listar Referências</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Degustação</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-degustacao.php">Cadastrar Degustação</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-degustacao.php">Listar Degustação</a></li>
-        </ul>
-        <h2 class="menu-title">Menu de Medidas</h2>
-        <ul class="menu-list">
-            <li class="menu-item"><a class="menu-link" href="1-Create/cadastrar-medida.php">Cadastrar Medidas</a></li>
-            <li class="menu-item"><a class="menu-link" href="2-Read/listar-medida.php">Listar Medidas</a></li>
-        </ul>
+    <div class="container">
+        <div class="menu-container">
+
+            <!-- Apresentação -->
+            <div class="card">
+                <div class="card-header" id="headingApresentacao">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title" type="button" data-toggle="collapse" data-target="#collapseApresentacao"
+                            aria-expanded="true" aria-controls="collapseApresentacao">
+                            Apresentação
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseApresentacao" class="collapse show" aria-labelledby="headingApresentacao"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="2-read/apresentar-livro.php">Livros</a></li>
+                            <li class="list-group-item"><a href="2-read/apresentar-receita.php">Receitas</a></li>
+                            <li class="list-group-item"><a href="2-read/apresentar-funcionario.php">Funcionários</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publicação -->
+            <div class="card">
+                <div class="card-header" id="headingPublicacao">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapsePublicacao"
+                            aria-expanded="false" aria-controls="collapsePublicacao">
+                            Publicação
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapsePublicacao" class="collapse" aria-labelledby="headingPublicacao"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-publicacao.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-publicacao.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Livros -->
+            <div class="card">
+                <div class="card-header" id="headingLivros">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseLivros"
+                            aria-expanded="false" aria-controls="collapseLivros">
+                            Livros
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseLivros" class="collapse" aria-labelledby="headingLivros"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-livro.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-livro.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receitas -->
+            <div class="card">
+                <div class="card-header" id="headingReceitas">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseReceitas"
+                            aria-expanded="false" aria-controls="collapserReceitas">
+                            Receitas
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseReceitas" class="collapse" aria-labelledby="headingReceitas"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-receita.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-receita.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingredientes -->
+            <div class="card">
+                <div class="card-header" id="headingIngredientes">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseIngredientes"
+                            aria-expanded="false" aria-controls="collapseIngredientes">
+                            Ingredientes
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseIngredientes" class="collapse" aria-labelledby="headingIngredientes"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-ingrediente.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-ingrediente.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categorias -->
+            <div class="card">
+                <div class="card-header" id="headingCategorias">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseCategorias"
+                            aria-expanded="false" aria-controls="collapseCategorias">
+                            Categorias
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseCategorias" class="collapse" aria-labelledby="headingCategorias"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-categoria.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-categoria.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Funcionários -->
+            <div class="card">
+                <div class="card-header" id="headingFuncionarios">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseFuncionarios"
+                            aria-expanded="false" aria-controls="collapseFuncionarios">
+                            Funcionários
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFuncionarios" class="collapse" aria-labelledby="headingFuncionarios"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-funcionario.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-funcionario.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cargos -->
+            <div class="card">
+                <div class="card-header" id="headingCargos">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseCargos"
+                            aria-expanded="false" aria-controls="collapseCargos">
+                            Cargos
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseCargos" class="collapse" aria-labelledby="headingCargos"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-cargo.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-cargo.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurantes -->
+            <div class="card">
+                <div class="card-header" id="headingRestaurantes">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseRestaurantes"
+                            aria-expanded="false" aria-controls="collapseRestaurantes">
+                            Restaurantes
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseRestaurantes" class="collapse" aria-labelledby="headingRestaurantes"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-restaurante.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-restaurante.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referências -->
+            <div class="card">
+                <div class="card-header" id="headingReferencias">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseReferencias"
+                            aria-expanded="false" aria-controls="collapseReferencias">
+                            Referências
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseReferencias" class="collapse" aria-labelledby="headingReferencias"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-referencia.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-referencia.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Degustação -->
+            <div class="card">
+                <div class="card-header" id="headingDegustacao">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseDegustacao"
+                            aria-expanded="false" aria-controls="collapseDegustacao">
+                            Degustação
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseDegustacao" class="collapse" aria-labelledby="headingDegustacao"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-degustacao.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-degustacao.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medidas -->
+            <div class="card">
+                <div class="card-header" id="headingMedidas">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link menu-title collapsed" type="button" data-toggle="collapse" data-target="#collapseMedidas"
+                            aria-expanded="false" aria-controls="collapseMedidas">
+                            Medidas
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseMedidas" class="collapse" aria-labelledby="headingMedidas"
+                    data-parent=".menu-container">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="1-Create/cadastrar-medida.php">Cadastrar</a></li>
+                            <li class="list-group-item"><a href="2-Read/listar-medida.php">Listar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repetir o padrão acima para outros títulos -->
+
+        </div>
     </div>
+
+    <!-- Adicione o link para o Bootstrap JS e o jQuery no final do corpo do HTML para um melhor desempenho -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>

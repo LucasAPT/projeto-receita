@@ -49,12 +49,13 @@
                     echo '<h3>Receitas criadas por ' . $cozinheiro['nome'] . '</h3>';
                     echo '</div>';
 
-                    // Consulta para obter as receitas criadas por este cozinheiro
-                    $stmt = $conexao->prepare("SELECT r.id_receita, r.nome, r.foto_receita, c.descricao AS categoria, r.modo_preparo, r.qtde_porcao, GROUP_CONCAT(i.nome ORDER BY i.nome ASC SEPARATOR ', ') AS ingredientes
+                    // Consulta para obter as receitas criadas por este cozinheiro, incluindo ingredientes
+                    $stmt = $conexao->prepare("SELECT r.id_receita, r.nome, r.foto_receita, c.descricao AS categoria, r.modo_preparo, r.qtde_porcao, GROUP_CONCAT(CONCAT(i.nome, ' (', comp.qtd_ingrediente, ' ', m.descricao, ')') ORDER BY i.nome ASC SEPARATOR ', ') AS ingredientes
                         FROM Receita r
                         LEFT JOIN Categoria c ON r.id_categoria = c.id_categoria
                         LEFT JOIN Composicao comp ON r.id_receita = comp.id_receita
                         LEFT JOIN Ingrediente i ON comp.id_ingrediente = i.id_ingrediente
+                        LEFT JOIN Medida m ON comp.id_medida = m.id_medida
                         WHERE r.id_cozinheiro = ?
                         GROUP BY r.id_receita");
                     $stmt->bindParam(1, $id_cozinheiro);

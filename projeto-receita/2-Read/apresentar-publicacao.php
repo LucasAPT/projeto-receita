@@ -55,15 +55,14 @@
                 echo '<h2>Receitas do Livro: ' . $dadosPublicacao['nome_livro'] . '</h2>';
                 echo '<h2>Nome da Publicação: ' . $dadosPublicacao['nome_publicacao'] . '</h2>';
                 
-    echo '</div>';
-    echo '<div class="content">';
                 // Consulta para obter as receitas da publicação
-                $stmt = $conexao->prepare("SELECT R.id_receita, R.nome AS nome_receita, R.foto_receita, R.id_categoria, C.descricao AS categoria, R.modo_preparo, R.qtde_porcao, GROUP_CONCAT(I.nome ORDER BY I.nome ASC SEPARATOR ', ') AS ingredientes, R.id_cozinheiro, F.nome AS cozinheiro, F.nome_fantasia
+                $stmt = $conexao->prepare("SELECT R.id_receita, R.nome AS nome_receita, R.foto_receita, R.id_categoria, C.descricao AS categoria, R.modo_preparo, R.qtde_porcao, GROUP_CONCAT(CONCAT(I.nome, ' (', COMP.qtd_ingrediente, ' ', M.descricao, ')') ORDER BY I.nome ASC SEPARATOR ', ') AS ingredientes, R.id_cozinheiro, F.nome AS cozinheiro, F.nome_fantasia
                     FROM Publicacao P
                     INNER JOIN Receita R ON P.idReceita = R.id_receita
                     LEFT JOIN Categoria C ON R.id_categoria = C.id_categoria
                     LEFT JOIN Composicao COMP ON R.id_receita = COMP.id_receita
                     LEFT JOIN Ingrediente I ON COMP.id_ingrediente = I.id_ingrediente
+                    LEFT JOIN Medida M ON COMP.id_medida = M.id_medida
                     LEFT JOIN Funcionario F ON R.id_cozinheiro = F.id_funcionario
                     WHERE P.idLivro = :idLivro
                     GROUP BY R.id_receita");

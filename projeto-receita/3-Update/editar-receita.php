@@ -269,5 +269,72 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_receita"])) {
         <input type="submit" value="Atualizar Receita">
     </form>
     <a href="../2-Read/listar-receita.php">Voltar</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ingredientContainer = document.getElementById("ingredient-container");
+            const addIngredientButton = document.getElementById("add-ingredient");
+
+            // Função para criar campos de ingredientes dinamicamente
+            function createIngredientFields() {
+                const ingredientDiv = document.createElement("div");
+                ingredientDiv.innerHTML = `
+                    <select name="ingredientes_selecionados[]">
+                        <?php
+                        // Consulta para buscar os ingredientes cadastrados em ordem alfabética
+                        $sqlIngredientes = "SELECT id_ingrediente, nome FROM Ingrediente ORDER BY nome";
+                        $stmtIngredientes = $conexao->prepare($sqlIngredientes);
+                        $stmtIngredientes->execute();
+                        $resultIngredientes = $stmtIngredientes->fetchAll(PDO::FETCH_ASSOC);
+
+                        // Verifique se há ingredientes disponíveis
+                        if (!empty($resultIngredientes)) {
+                            foreach ($resultIngredientes as $rowIngrediente) {
+                                // Crie uma opção para cada ingrediente disponível
+                                echo '<option value="' . $rowIngrediente['id_ingrediente'] . '">' . $rowIngrediente['nome'] . '</option>';
+                            }
+                        } else {
+                            echo '<option value="">Nenhum ingrediente disponível</option>';
+                        }
+                        ?>
+                    </select>
+                    <input type="number" name="quantidade[]" min="1" placeholder="Quantidade" required>
+                    <select name="medida[]">
+                        <?php
+                        // Consulta para buscar as medidas cadastradas
+                        $sqlMedidas = "SELECT id_medida, descricao FROM Medida";
+                        $stmtMedidas = $conexao->prepare($sqlMedidas);
+                        $stmtMedidas->execute();
+                        $resultMedidas = $stmtMedidas->fetchAll(PDO::FETCH_ASSOC);
+
+                        // Verifique se há medidas disponíveis
+                        if (!empty($resultMedidas)) {
+                            foreach ($resultMedidas as $rowMedida) {
+                                // Crie uma opção para cada medida disponível
+                                echo '<option value="' . $rowMedida['id_medida'] . '">' . $rowMedida['descricao'] . '</option>';
+                            }
+                        } else {
+                            echo '<option value="">Nenhuma medida disponível</option>';
+                        }
+                        ?>
+                    </select>
+                    <button type="button" class="remove-ingredient">Remover</button>
+                `;
+                ingredientContainer.appendChild(ingredientDiv);
+
+                // Configura um manipulador de eventos para remover o campo de ingrediente
+                const removeButton = ingredientDiv.querySelector(".remove-ingredient");
+                removeButton.addEventListener("click", function () {
+                    ingredientContainer.removeChild(ingredientDiv);
+                });
+            }
+
+            // Adicionar um campo de ingrediente quando o botão "Adicionar Ingrediente" é clicado
+            addIngredientButton.addEventListener("click", createIngredientFields);
+
+            // Adicione um campo de ingrediente inicialmente
+            createIngredientFields();
+        });
+    </script>
 </body>
 </html>

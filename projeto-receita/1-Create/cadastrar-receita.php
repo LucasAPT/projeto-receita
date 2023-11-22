@@ -2,6 +2,11 @@
 include "../conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verifica se há pelo menos um ingrediente
+    if (empty($_POST["ingredientes_selecionados"])) {
+        die("Adicione pelo menos um ingrediente.");
+    }
+
     $nome = $_POST["nome"];
     $data_criacao = $_POST["data_criacao"];
     $categoria = $_POST["categoria"];
